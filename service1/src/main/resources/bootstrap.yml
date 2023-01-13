@@ -1,0 +1,24 @@
+server:
+  port: 56010
+spring:
+  application:
+    name: service1
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 #配置中心
+        file-extension: yaml #配置中心文件后缀，读取规则 service-name+后缀 为配置文件dataid
+        namespace: 7a08382b-3202-414d-aa44-9dfbbf6c671e #环境
+        group: TEST_GROUP
+        #配置文件优先级，规则配置>ext-config>shared-dataids ,其中ext-config[n] n越大优先级越高
+        #扩展配置文件-配置文件引用 ,默认分组 default_group 动态刷新配置 refresh，默认false
+        ext-config[0]:
+          data_id: ext-config1.properties
+        ext-config[1]:
+          data_id: ext-config2.properties
+          group: GLOBALE_GROUP
+        #refresh 刷新
+        ext-config[2]:
+          data_id: ext-config3.properties
+          group: REFRESH_GROUP
+          refresh: true

@@ -1,0 +1,12 @@
+server:
+  port: 56020
+spring:
+  application:
+    name: service2
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 #配置中心
+        file-extension: yaml #配置中心文件后缀，读取规则 service-name+后缀 为配置文件dataid
+        namespace: 7a08382b-3202-414d-aa44-9dfbbf6c671e #环境
+        group: TEST_GROUP
