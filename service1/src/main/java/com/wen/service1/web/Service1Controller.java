@@ -1,5 +1,6 @@
 package com.wen.service1.web;
 
+import com.wen.service1.fileUtil.ConfigFileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,8 @@ public class Service1Controller {
     private String age;
     @Value("${common.fullName}")
     private String fullName;
+    @Value("${file.path}")
+    private String filePath;
 
     @GetMapping("/getConfig")
     public String getConfig(){
@@ -36,5 +39,16 @@ public class Service1Controller {
     @GetMapping("/getExtConfig")
     public String getExtConfig(){
         return name+"  "+address+" "+age+" "+ fullName;
+    }
+
+
+    @GetMapping("/getPath")
+    public String getPath(){
+        return filePath;
+    }
+
+    @GetMapping("/getProValue")
+    public String getProValue(){
+        return ConfigFileUtils.getPropertiesValue("param.properties","test");
     }
 }
