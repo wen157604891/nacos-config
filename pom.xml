@@ -10,6 +10,7 @@
     <modules>
         <module>service1</module>
         <module>service2</module>
+        <module>base-common</module>
     </modules>
     <packaging>pom</packaging>
 
